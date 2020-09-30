@@ -32,16 +32,21 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 	// TODO: findMin
 	@Override
 	public T findMin() {
-
-//
-		return null;
+		T minimum =  _element;
+		while(!_left.isEmpty()){
+			minimum = (T) _left;
+		}
+		return minimum;
 	}
 
 	// TODO: findMax
 	@Override
 	public T findMax() {
-
-		return null;
+		T maximum =  _element;
+		while(!_right.isEmpty()){
+			maximum = (T) _right;
+		}
+		return maximum;
 	}
 
 	// TODO: contains
