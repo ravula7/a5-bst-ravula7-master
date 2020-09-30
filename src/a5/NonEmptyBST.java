@@ -132,8 +132,8 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 			return;
 		}
 		System.out.print(_element + " "); //print the root
-		_left.printInOrderTraversal(); //recurse left
-		_right.printInOrderTraversal(); //recurse right
+		_left.printPreOrderTraversal(); //recurse left
+		_right.printPreOrderTraversal(); //recurse right
 	}
 
 	// TODO: printPostOrderTraversal
@@ -142,8 +142,8 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 		if(_left == null && _right ==null) { //nothing left to traverse - then return nothing
 			return;
 		}
-		_left.printInOrderTraversal(); //recurse left
-		_right.printInOrderTraversal(); //recurse right
+		_left.printPostOrderTraversal(); //recurse left
+		_right.printPostOrderTraversal(); //recurse right
 		System.out.print(_element + " "); //print the root
 	}
 
