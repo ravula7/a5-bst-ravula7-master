@@ -150,12 +150,16 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 	// TODO: printBreadthFirstTraversal
 	@Override
 	public void printBreadthFirstTraversal() {
-
+		if(_left == null && _right ==null) { //nothing left to traverse - then return nothing
+			return;
+		}
+		System.out.print(_element + " "); //print the root
+		_left.printBreadthFirstTraversal();
+		_right.printBreadthFirstTraversal();
 	}
 
 	@Override
 	public int getHeight() {
-
 		return Math.max(_left.getHeight(), _right.getHeight())+1; //add 1 because the main root's node needs to be counted too
 	}
 
