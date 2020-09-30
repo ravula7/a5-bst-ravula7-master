@@ -1,5 +1,5 @@
 package a5;
-//editing this!!
+
 
 public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 	private T _element;
@@ -59,25 +59,13 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 	// TODO: insert
 	@Override
 	public BST<T> insert(T element) {
-		if (element.compareTo(getElement()) > 0) { //recurse to the right because element is larger
-			if (getRight().isEmpty()) { //insert the element if the right child is empty
-				getRight().insert(element);
-			}
-			return new NonEmptyBST<T>(element); //=_right?
+		if (element.compareTo(_element) >= 0) { //recurse to the right because element is larger or the same
+			_right = _right.insert(element);
 		}
-		else if (element.compareTo(getElement()) < 0) { //recurse to the left because element is smaller
-			if (getLeft().isEmpty()) { //insert the element if the left child is empty
-				getLeft().insert(element);
-			}
-			return new NonEmptyBST<T>(element); //=left?
+		else if (element.compareTo(_element) < 0) { //recurse to the left because element is smaller
+			_left = _left.insert(element);
 		}
-		else if (element.compareTo(getElement()) == 0) {//recurse either way because element is same
-			if (getLeft().isEmpty()) { //insert the element if the left child is empty
-				getLeft().insert(element);
-			}
-			return new NonEmptyBST<T>(element); //=left?
-		}
-		return null;
+		return this;
 	}
 
 	// TODO: remove
