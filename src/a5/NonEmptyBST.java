@@ -166,13 +166,6 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 				queue.add((T) _right);
 			}
 		}
-
-
-
-
-		System.out.print(_element + " "); //print the root
-		_left.printBreadthFirstTraversal();
-		_right.printBreadthFirstTraversal();
 	}
 
 	@Override
