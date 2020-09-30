@@ -1,8 +1,5 @@
 package a5;
 
-
-import java.util.LinkedList;
-
 public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 	private T _element;
 	private BST<T> _left;
@@ -152,7 +149,6 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 	// TODO: printBreadthFirstTraversal
 	@Override
 	public void printBreadthFirstTraversal() {
-
 	}
 
 	@Override
