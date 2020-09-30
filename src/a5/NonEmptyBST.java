@@ -112,23 +112,39 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 
 		return this;
 	}
-
+	//every element takes the place of _element at some point and that is when it is printed
 	// TODO: printInOrderTraversal
 	@Override
-	public void printInOrderTraversal() {
-
+	//visit left, root, right
+	public void printInOrderTraversal() { //void so use system.out.print
+		if(_left == null && _right ==null) { //nothing left to traverse - then return nothing
+			return;
+		}
+		_left.printInOrderTraversal(); //recurse left
+		System.out.print(_element + " "); //print the root
+		_right.printInOrderTraversal(); //recurse right
 	}
 
 	// TODO: printPreOrderTraversal
 	@Override
 	public void printPreOrderTraversal() {
-
+		if(_left == null && _right ==null) { //nothing left to traverse - then return nothing
+			return;
+		}
+		System.out.print(_element + " "); //print the root
+		_left.printInOrderTraversal(); //recurse left
+		_right.printInOrderTraversal(); //recurse right
 	}
 
 	// TODO: printPostOrderTraversal
 	@Override
 	public void printPostOrderTraversal() {
-
+		if(_left == null && _right ==null) { //nothing left to traverse - then return nothing
+			return;
+		}
+		_left.printInOrderTraversal(); //recurse left
+		_right.printInOrderTraversal(); //recurse right
+		System.out.print(_element + " "); //print the root
 	}
 
 	// TODO: printBreadthFirstTraversal
