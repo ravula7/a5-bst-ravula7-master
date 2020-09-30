@@ -35,8 +35,9 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 		T minimum =  _element;
 		while(!_left.isEmpty()){
 			minimum = (T) _left;
+			return minimum;
 		}
-		return minimum;
+		return null;
 	}
 
 	// TODO: findMax
@@ -45,15 +46,27 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 		T maximum =  _element;
 		while(!_right.isEmpty()){
 			maximum = (T) _right;
+			return maximum;
 		}
-		return maximum;
+		return null;
 	}
 
 	// TODO: contains
 	@Override
 	public boolean contains(T element) {
-
-		return false;
+		if(this.isEmpty()){ //when the tree is empty, it contains no elements
+			return false;
+		}
+		else if(element.compareTo(_element) == 0){ //found the element!
+			return true;
+		}
+		else if(element.compareTo(_element) > 0){ //need to recurse right to find the element
+			return getRight().contains(element); //return true or false whether the right side contains the element or not
+		}
+		else if(element.compareTo(getElement()) < 0){ //need to recurse left to find the element
+			return getLeft().contains(element); //return true or false whether the left side contains the element or not
+		}
+		return false; //otherwise
 	}
 
 	// TODO: insert
