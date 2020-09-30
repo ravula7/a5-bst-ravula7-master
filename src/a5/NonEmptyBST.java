@@ -33,8 +33,11 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 	@Override
 	public T findMin() {
 		T minimum =  _element;
-		while(!_left.isEmpty()){
-			minimum = (T) _left;
+		if(!_left.isEmpty()) {
+			minimum =_left.findMin();
+		}
+		else if(_left.isEmpty()){
+			minimum = this._element;
 		}
 		return minimum;
 	}
@@ -43,8 +46,11 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 	@Override
 	public T findMax() {
 		T maximum =  _element;
-		while(!_right.isEmpty()){
-			maximum = (T) _right;
+		if(!_right.isEmpty()) {
+			maximum =_right.findMax();
+		}
+		else if(_right.isEmpty()){
+			maximum = this._element;
 		}
 		return maximum;
 	}
@@ -88,44 +94,22 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 		else if (element.compareTo(_element) <0) { //recurse to the left because element is smaller
 			_left = _left.remove(element);
 		}
-
-		//recursing
-		if(_element== null){
-			return null;
+		else if(_left.isEmpty() && _right.isEmpty()){
+			EmptyBST<T> emptyTree = new EmptyBST<T>();
+			return emptyTree;
 		}
-		if(element.compareTo(_element) <0){ //recurse to the left because element is smaller
-			_left = _left.remove(element);
+		else if(!_left.isEmpty() && _right.isEmpty()){
+			return _left;
 		}
-		else if (element.compareTo(_element) > 0) { //recurse to the right because element is larger
-			_right = _right.remove(element);
+		else if(_left.isEmpty() && !_right.isEmpty()){
+			return _right;
 		}
-		else {
-			//two children
-			/*if(_right != null && _left != null){
-
-			}
-			 */
-			//one non empty child on the left
-			if(_left != null){
-				element = (T) _left.getLeft();
-			}
-			//one non empty child on the right
-			else if(_right != null){
-				element = (T) _right.getRight();
-			}
-			//no children
-			else{
-				element = null;
-			}
+		else if (!_left.isEmpty() && !_right.isEmpty()){
+			T minimum = _right.findMin();
+			_element = minimum;
+			_right = _right.remove(minimum);
 		}
 
-		/*if(_right.isEmpty()){
-			_right = _right.remove(element);
-		}
-		else if(_left.isEmpty()){
-			_left = _left.remove(element);
-		}
-		 */
 		return this;
 	}
 
