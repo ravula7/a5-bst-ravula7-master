@@ -26,12 +26,7 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 		if(_element == null){
 			return 0;
 		}
-
 		return sizeOfLeft+sizeOfRight+1;
-
-		//System.out.print(_element+" ");
-		//int size = _left+_right+1
-		//return -1;
 	}
 
 	// TODO: findMin
@@ -71,12 +66,50 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 	// TODO: remove
 	@Override
 	public BST<T> remove(T element) {
-		if(_right.isEmpty()){
+		if (element.compareTo(_element) > 0) { //recurse to the right because element is larger
+			_right = _right.remove(element);
+		}
+		else if (element.compareTo(_element) <0) { //recurse to the left because element is smaller
+			_left = _left.remove(element);
+		}
+
+		//recursing
+		if(_element== null){
+			return null;
+		}
+		if(element.compareTo(_element) <0){ //recurse to the left because element is smaller
+			_left = _left.remove(element);
+		}
+		else if (element.compareTo(_element) > 0) { //recurse to the right because element is larger
+			_right = _right.remove(element);
+		}
+		else {
+			//two children
+			/*if(_right != null && _left != null){
+
+			}
+			 */
+			//one non empty child on the left
+			if(_left != null){
+				element = (T) _left.getLeft();
+			}
+			//one non empty child on the right
+			else if(_right != null){
+				element = (T) _right.getRight();
+			}
+			//no children
+			else{
+				element = null;
+			}
+		}
+
+		/*if(_right.isEmpty()){
 			_right = _right.remove(element);
 		}
 		else if(_left.isEmpty()){
 			_left = _left.remove(element);
 		}
+		 */
 		return this;
 	}
 
