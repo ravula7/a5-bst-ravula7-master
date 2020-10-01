@@ -162,10 +162,12 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 
 			//enqueue children (left and right)
 			if(!_left.isEmpty()){
-			queue.add((BST<T>) _left);
+			queue.add(_left);
+			_left = _left.getLeft();
 			}
 			if(!_right.isEmpty()){
-			queue.add((BST<T>) _right);
+			queue.add(_right);
+			_right = _right.getRight();
 			}
 		}
 	}
