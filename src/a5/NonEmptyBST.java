@@ -153,22 +153,15 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 	public void printBreadthFirstTraversal() {
 		Queue <BST<T>> queue = new LinkedList<BST<T>> () ;
 		queue.add((BST<T>) _element);
-
 		while(!queue.isEmpty()){
-			queue.remove(_element);
-			System.out.print(_element + " "); //print the root
-
-			if(!getLeft().isEmpty()){
-				queue.add((BST<T>) _left);
-				System.out.print(_left + " ");
-				queue.remove(_element);
+		BST<T> node = queue.remove();
+		System.out.print(node +" ");
+			if(!node.getLeft().isEmpty()){
+			queue.add(node.getLeft());
 			}
-			if(!getRight().isEmpty()){
-				queue.add((BST<T>) _right);
-				System.out.print(_right + " ");
-				queue.remove(_element);
+			if(!node.getRight().isEmpty()){
+			queue.add(node.getRight());
 			}
-
 		}
 	}
 
