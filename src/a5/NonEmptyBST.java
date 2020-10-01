@@ -152,6 +152,7 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 	@Override
 	public void printBreadthFirstTraversal() {
 		Queue <BST<T>> queue = new LinkedList<BST<T>> () ; //create queue of trees
+
 		queue.add((BST<T>) _element); //enqueue tree to list
 
 		while(!queue.isEmpty()){ //while queue is not empty
