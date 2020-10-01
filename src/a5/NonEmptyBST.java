@@ -160,9 +160,11 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 
 			if(!getLeft().isEmpty()){
 				queue.add((BST<T>) _left);
+				System.out.print(_left + " ");
 			}
 			if(!getRight().isEmpty()){
 				queue.add((BST<T>) _right);
+				System.out.print(_right + " ");
 			}
 
 		}
