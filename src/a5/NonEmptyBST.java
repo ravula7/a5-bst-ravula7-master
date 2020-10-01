@@ -155,11 +155,9 @@ public class NonEmptyBST<T extends Comparable<T>> implements BST<T> {
 		queue.add((BST<T>) _element); //enqueue tree to list
 
 		while(!queue.isEmpty()){ //while queue is not empty
-			BST <T> node = queue.remove();//dequeue tree from list
-			System.out.print(node +" "); //process value
 
-			//BST<T> element = queue.remove(); //dequeue tree from list
-			//System.out.print(element +" "); //process value
+			queue.remove();//dequeue tree from list
+			System.out.print( _element +" "); //process value
 
 			//enqueue children (left and right)
 			if(!_left.isEmpty()){
